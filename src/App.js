@@ -7,9 +7,9 @@ function App() {
   }
   return (
     <>
-      <main className="m-5 p-5 lg:max-w-xl lg:mx-auto bg-white rounded shadow">
+      <main className="m-5 p-5 xl:max-w-4xl xl:mx-auto bg-white rounded shadow">
             {/* Header */}
-        <header className="flex flex-col items-center justify-center mb-5">
+        <header className="flex flex-col items-center justify-center mb-5 xl:flex-row xl:justify-between">
           <div>
             <h1 className="font-bold uppercase tracking-wide text-4xl mb-3">INVOICE GENERATOR</h1>
           </div>
@@ -32,42 +32,44 @@ function App() {
         {/* End of your details */}
 
         {/* Client details */}
-        <section>
+        <section className="mt-5">
           <h2 className="text-xl uppercase">Client's Name</h2>
           <p>Client's Address</p>
         </section>
         {/* End of client details */}
 
         {/* Dates */}
-        <article>
+        <article className="my-5 flex items-end justify-end">
           <ul>
-            <li>Invoice number : </li>
-            <li>Invoice date : </li>
-            <li>Due date : </li>
+            <li><span className="font-bold">Invoice number : </span></li>
+            <li><span className="font-bold">Invoice date : </span></li>
+            <li><span className="font-bold">Due date : </span></li>
           </ul>
         </article>
         {/* End of Dates */}
 
         {/* Table */}
-
+          <div className="my-5 ">
+            This is the table
+          </div>
         {/* End of Table */}
 
         {/* Notes */}
-        <section>
+        <section className="mb-5">
           <p>Notes to the client...</p>
         </section>
         {/* End of Notes */}
 
         {/* Footer */}
         <footer>
-          <ul>
-            <li>Your name : </li>
-            <li>Your email : </li>
-            <li>Phone number : </li>
-            <li>Bank : </li>
-            <li>Account holder name : </li>
-            <li>Account number : </li>
-            <li>Website : </li>
+          <ul className="flex flex-wrap items-center justify-center">
+            <li><span className="font-bold">Your name :</span> Priya Jha</li>
+            <li><span className="font-bold">Your email :</span> priyajha7585@gmail.com</li>
+            <li><span className="font-bold">Phone number :</span> 7984256476</li>
+            <li><span className="font-bold">Bank :</span> Kotak bank</li>
+            <li><span className="font-bold">Account holder name :</span> Priya Jha</li>
+            <li><span className="font-bold">Account number :</span> 78328732763287</li>
+            <li><span className="font-bold">Website :</span> www.priyajha.com</li>
           </ul>
         </footer>
         {/* End of Footer */}
