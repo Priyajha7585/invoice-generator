@@ -9,15 +9,15 @@ function App() {
     <>
       <main>
             {/* Header */}
-        <header>
+        <header className="flex flex-col items-center justify-center mb-5">
           <div>
             <h2>INVOICE GENERATOR</h2>
           </div>
           <div>
-            <ul>
+            <ul className="flex items-center justify-between flex-wrap">
               <li><button onClick={handlePrint}>Print</button></li>
-              <li>Download</li>
-              <li>Send</li>
+              <li><button>Download</button></li>
+              <li><button>Send</button></li>
             </ul>
           </div>
         </header>
