@@ -7,33 +7,33 @@ function App() {
   }
   return (
     <>
-      <main>
+      <main className="m-5 p-5 lg:max-w-xl lg:mx-auto bg-white rounded shadow">
             {/* Header */}
         <header className="flex flex-col items-center justify-center mb-5">
           <div>
-            <h2>INVOICE GENERATOR</h2>
+            <h1 className="font-bold uppercase tracking-wide text-4xl mb-3">INVOICE GENERATOR</h1>
           </div>
           <div>
             <ul className="flex items-center justify-between flex-wrap">
-              <li><button onClick={handlePrint}>Print</button></li>
-              <li><button>Download</button></li>
-              <li><button>Send</button></li>
+              <li><button onClick={handlePrint} className="btn btn-print">Print</button></li>
+              <li><button className="btn btn-download">Download</button></li>
+              <li><button className="btn btn-send">Send</button></li>
             </ul>
           </div>
         </header>
         {/* End of header */}
 
         {/* Your details */}
-        <section>
+        <section className="flex flex-col items-center justify-end">
           {/* <input type="text" name="text" id="text" placeholder="Enter your name" required/> */}
-          <h2>Priya Jha</h2>
+          <h2 className="text-xl uppercase">Priya Jha</h2>
           <p>Your Address</p>
         </section>
         {/* End of your details */}
 
         {/* Client details */}
         <section>
-          <h2>Client's Name</h2>
+          <h2 className="text-xl uppercase">Client's Name</h2>
           <p>Client's Address</p>
         </section>
         {/* End of client details */}
