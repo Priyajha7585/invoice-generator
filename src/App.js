@@ -21,7 +21,9 @@ function App() {
             </ul>
           </div>
         </header>
+        {/* End of header */}
 
+        {/* Your details */}
         <section className="flex flex-col items-center justify-end">
           {/* <input type="text" name="text" id="text" placeholder="Enter your name" required/> */}
           <h2 className="text-xl uppercase">Priya Jha</h2>
