@@ -1,17 +1,18 @@
 import React from 'react'
 
-function Footer() {
+function Footer({name, email, phone, website, bankName, bankAccount}) {
   return (
     <>
         <footer>
           <ul className="flex flex-wrap items-center justify-center">
-            <li><span className="font-bold">Your name :</span> Priya Jha</li>
-            <li><span className="font-bold">Your email :</span> priyajha7585@gmail.com</li>
-            <li><span className="font-bold">Phone number :</span> 7984256476</li>
-            <li><span className="font-bold">Bank :</span> Kotak bank</li>
-            <li><span className="font-bold">Account holder name :</span> Priya Jha</li>
-            <li><span className="font-bold">Account number :</span> 78328732763287</li>
-            <li><span className="font-bold">Website :</span> www.priyajha.com</li>
+            <li><span className="font-bold">Your name :</span> {name}</li>
+            <li><span className="font-bold">Your email :</span> {email}</li>
+            <li><span className="font-bold">Phone number :</span> {phone}</li>
+            <li><span className="font-bold">Bank Name :</span> {bankName}</li>
+            <li><span className="font-bold">Account holder name :</span> {name}</li>
+            <li><span className="font-bold">Account number :</span> {bankAccount}</li>
+            <li><span className="font-bold">Website :</span> 
+            <a target='_blank' href={website} rel="noopener noreferrer">{website}</a></li>
           </ul>
         </footer>
     </>
