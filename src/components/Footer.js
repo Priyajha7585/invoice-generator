@@ -3,7 +3,7 @@ import React from 'react'
 function Footer({name, email, phone, website, bankName, bankAccount}) {
   return (
     <>
-        <footer>
+        <footer className="footer border-t-2 border-gray-300 pt-5">
           <ul className="flex flex-wrap items-center justify-center">
             <li><span className="font-bold">Your name :</span> {name}</li>
             <li><span className="font-bold">Your email :</span> {email}</li>

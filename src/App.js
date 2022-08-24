@@ -28,7 +28,7 @@ function App() {
     }
   return (
     <>
-      <main className="m-5 p-5 xl:max-w-4xl xl:mx-auto bg-white rounded shadow">
+      <main className="m-5 p-5 md:max-w-xl md:mx-auto lg:max-w-2xl xl:max-w-4xl  bg-white rounded shadow">
         
         {
           showInvoice ?
@@ -40,7 +40,7 @@ function App() {
           <Table />
           <Notes notes={notes} />
           <Footer name={name} email={email} phone={phone} website={website} bankName={bankName} bankAccount={bankAccount} />
-          <button onClick={()=>setShowInvoice(false)} className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-50
+          <button onClick={()=>setShowInvoice(false)} className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500
           hover:bg-transparent hover:text-blue-500 transition-all duration-300">Edit Information</button>
         </div>)
         :
@@ -103,7 +103,7 @@ function App() {
           placeholder="Additional notes to the client" value={notes} onChange={(e)=>setNotes(e.target.value)}>
           </textarea>
 
-          <button onClick={()=>setShowInvoice(true)} className="bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-50
+          <button onClick={()=>setShowInvoice(true)} className="bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500
           hover:bg-transparent hover:text-blue-500 transition-all duration-300">Preview Invoice</button>
           </div>
           </>
