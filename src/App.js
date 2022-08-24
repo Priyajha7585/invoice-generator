@@ -50,25 +50,37 @@ function App() {
           client address, invoice number, invoice date, due date, notes */}
           <div className="flex flex-col justify-center">
           
-          <label htmlFor="name">Enter your name</label>
-          <input name="name" id="name" type="text" placeholder="Enter your name"
-          value={name} onChange={(e)=>setName(e.target.value)} autoComplete="off"/>
+          <article className="md:grid grid-cols-2 gap-10">
+            <div className="flex flex-col">
+              <label htmlFor="name">Enter your name</label>
+              <input name="name" id="name" type="text" placeholder="Enter your name"
+              value={name} onChange={(e)=>setName(e.target.value)} autoComplete="off"/>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="address">Enter your address</label>
+              <input name="address" id="address" type="text" placeholder="Enter your address"
+              value={address} onChange={(e)=>setAddress(e.target.value)} autoComplete="off"/>
+            </div>
+          </article>
+          
 
-          <label htmlFor="address">Enter your address</label>
-          <input name="address" id="address" type="text" placeholder="Enter your address"
-          value={address} onChange={(e)=>setAddress(e.target.value)} autoComplete="off"/>
-
-          <label htmlFor="email">Enter your email</label>
-          <input name="email" id="email" type="email" placeholder="Enter your email"
-          value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="off"/>
-
-          <label htmlFor="website">Enter your website</label>
-          <input name="website" id="website" type="url" placeholder="Enter your website"
-          value={website} onChange={(e)=>setWebsite(e.target.value)} autoComplete="off"/>
-
-          <label htmlFor="phone">Enter your phone</label>
-          <input name="phone" id="phone" type="text" placeholder="Enter your phone"
-          value={phone} onChange={(e)=>setPhone(e.target.value)} autoComplete="off"/>
+          <article>
+          <div>
+            <label htmlFor="email">Enter your email</label>
+            <input name="email" id="email" type="email" placeholder="Enter your email"
+            value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="off"/>
+          </div>
+          <div>
+            <label htmlFor="website">Enter your website</label>
+            <input name="website" id="website" type="url" placeholder="Enter your website"
+            value={website} onChange={(e)=>setWebsite(e.target.value)} autoComplete="off"/>
+          </div>
+          <div>
+            <label htmlFor="phone">Enter your phone</label>
+            <input name="phone" id="phone" type="text" placeholder="Enter your phone"
+            value={phone} onChange={(e)=>setPhone(e.target.value)} autoComplete="off"/>
+          </div>
+          </article>
 
           <label htmlFor="bankName">Enter your bank name</label>
           <input name="bankName" id="bankName" type="text" placeholder="Enter your bank name"
