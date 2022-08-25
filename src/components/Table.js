@@ -1,23 +1,25 @@
 import React from 'react'
 
-function Table() {
+function Table({description, quantity, price, amount}) {
   return (
     <>
-        <table>
+        <table width="100%">
           <thead>
-            <th>
-              <td>Item Description</td>
-            </th>
-            <th>
-              <td>Quantity</td>
-            </th>
-            <th>
-              <td>Price</td>
-            </th>
-            <th>
-              <td>Amount</td>
-            </th>
+            <tr className="bg-gray-100 p-1">
+              <td className="font-bold">Item Description</td>
+              <td className="font-bold">Quantity</td>
+              <td className="font-bold">Price</td>
+              <td className="font-bold">Amount</td>
+            </tr>
           </thead>
+          <tbody>
+            <tr>
+              <td>{description}</td>
+              <td>{quantity}</td>
+              <td>{price}</td>
+              <td>{amount}</td>
+            </tr>
+          </tbody>
         </table>
     </>
   )

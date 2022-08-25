@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import MainDetails from "./components/MainDetails";
 import Notes from "./components/Notes";
 import Table from "./components/Table";
+import TableForm from "./components/TableForm";
 
 function App() {
   const [showInvoice, setShowInvoice] = useState(true);
@@ -22,6 +23,10 @@ function App() {
   const [invoiceDate, setInvoiceDate] = useState("2022-08-01");
   const [dueDate, setDueDate] = useState("2022-09-01");
   const [notes, setNotes] = useState("Please make my payment");
+  const [description, setDescription] = useState("Some long description");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
+  const [amount, setAmount] = useState("");
   const handlePrint = () =>
     {
       window.print()
@@ -37,7 +42,7 @@ function App() {
           <MainDetails name={name} address={address}/>
           <ClientDetails clientName={clientName} clientAddress={clientAddress}/>
           <Dates invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} dueDate={dueDate} />
-          <Table />
+          <Table description={description} quantity={quantity} price={price} amount={amount}/>
           <Notes notes={notes} />
           <Footer name={name} email={email} phone={phone} website={website} bankName={bankName} bankAccount={bankAccount} />
           <button onClick={()=>setShowInvoice(false)} className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500
@@ -125,13 +130,14 @@ function App() {
           </div>
           </article>
 
-          
-
-          
-
-          
-
-          
+          <article>
+            <TableForm 
+              description={description} setDescription={setDescription}
+              quantity={quantity} setQuantity={setQuantity}
+              price={price} setPrice={setPrice}
+              amount={amount} setAmount={setAmount}
+            />
+          </article>
 
           <label htmlFor="notes">Additional Notes</label>
           <textarea name="notes" id="notes" cols="30" rows="10" 
