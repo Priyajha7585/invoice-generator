@@ -8,20 +8,20 @@ import Notes from "./components/Notes";
 import Table from "./components/Table";
 
 function App() {
-  const [showInvoice, setShowInvoice] = useState(false);
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [bankName, setBankName] = useState("");
-  const [bankAccount, setBankAccount] = useState("");
-  const [website, setWebsite] = useState("");
-  const [clientName, setClientName] = useState("");
-  const [clientAddress, setClientAddress] = useState("");
-  const [invoiceNumber, setInvoiceNumber] = useState("");
-  const [invoiceDate, setInvoiceDate] = useState("");
-  const [dueDate, setDueDate] = useState("");
-  const [notes, setNotes] = useState("");
+  const [showInvoice, setShowInvoice] = useState(true);
+  const [name, setName] = useState("Priya Jha");
+  const [address, setAddress] = useState("Surat, Gujarat");
+  const [email, setEmail] = useState("priyajha7585@gmail.com");
+  const [phone, setPhone] = useState("7984256476");
+  const [bankName, setBankName] = useState("Kotak Bank");
+  const [bankAccount, setBankAccount] = useState("89243798236732");
+  const [website, setWebsite] = useState("www.priyajha.com");
+  const [clientName, setClientName] = useState("Innovaccer");
+  const [clientAddress, setClientAddress] = useState("Noida, Uttar Pradesh");
+  const [invoiceNumber, setInvoiceNumber] = useState("1001");
+  const [invoiceDate, setInvoiceDate] = useState("2022-08-01");
+  const [dueDate, setDueDate] = useState("2022-09-01");
+  const [notes, setNotes] = useState("Please make my payment");
   const handlePrint = () =>
     {
       window.print()
@@ -63,52 +63,75 @@ function App() {
             </div>
           </article>
           
-
-          <article>
-          <div>
+          <article className="md:grid grid-cols-3 gap-10">
+          <div className="flex flex-col">
             <label htmlFor="email">Enter your email</label>
             <input name="email" id="email" type="email" placeholder="Enter your email"
             value={email} onChange={(e)=>setEmail(e.target.value)} autoComplete="off"/>
           </div>
-          <div>
+          <div className="flex flex-col">
             <label htmlFor="website">Enter your website</label>
             <input name="website" id="website" type="url" placeholder="Enter your website"
             value={website} onChange={(e)=>setWebsite(e.target.value)} autoComplete="off"/>
           </div>
-          <div>
+          <div className="flex flex-col">
             <label htmlFor="phone">Enter your phone</label>
             <input name="phone" id="phone" type="text" placeholder="Enter your phone"
             value={phone} onChange={(e)=>setPhone(e.target.value)} autoComplete="off"/>
           </div>
           </article>
+          
+          <article className="md:grid grid-cols-2 gap-10">
+            <div className="flex flex-col">
+              <label htmlFor="bankName">Enter your bank name</label>
+              <input name="bankName" id="bankName" type="text" placeholder="Enter your bank name"
+              value={bankName} onChange={(e)=>setBankName(e.target.value)} autoComplete="off"/>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="bankAccount">Enter your bank account number</label>
+              <input name="bankAccount" id="bankAccount" type="text" placeholder="Enter your bank account number"
+              value={bankAccount} onChange={(e)=>setBankAccount(e.target.value)} autoComplete="off"/>
+            </div>
+          </article>
+          
+          <article className="md:grid grid-cols-2 gap-10 md:mt-10">
+            <div className="flex flex-col">
+              <label htmlFor="clientName">Enter client's name</label>
+              <input name="clientName" id="clientName" type="text" placeholder="Enter client's name"
+              value={clientName} onChange={(e)=>setClientName(e.target.value)} autoComplete="off"/>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="clientAddress">Enter client's address</label>
+              <input name="clientAddress" id="clientAddress" type="text" placeholder="Enter client's address"
+              value={clientAddress} onChange={(e)=>setClientAddress(e.target.value)} autoComplete="off"/>  
+            </div>
+          </article>
 
-          <label htmlFor="bankName">Enter your bank name</label>
-          <input name="bankName" id="bankName" type="text" placeholder="Enter your bank name"
-          value={bankName} onChange={(e)=>setBankName(e.target.value)} autoComplete="off"/>
+          <article className="md:grid grid-cols-3 gap-10">
+          <div className="flex flex-col">
+            <label htmlFor="invoiceNumber">Invoice number</label>
+            <input name="invoiceNumber" id="invoiceNumber" type="text" placeholder="Invoice number"
+            value={invoiceNumber} onChange={(e)=>setInvoiceNumber(e.target.value)} autoComplete="off"/>  
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="invoiceDate">Invoice date</label>
+            <input name="invoiceDate" id="invoiceDate" type="date" placeholder="Invoice date"
+            value={invoiceDate} onChange={(e)=>setInvoiceDate(e.target.value)} autoComplete="off"/>   
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="dueDate">Due date</label>
+            <input name="dueDate" id="dueDate" type="date" placeholder="Due date"
+            value={dueDate} onChange={(e)=>setDueDate(e.target.value)} autoComplete="off"/>   
+          </div>
+          </article>
 
-          <label htmlFor="bankAccount">Enter your bank account number</label>
-          <input name="bankAccount" id="bankAccount" type="text" placeholder="Enter your bank account number"
-          value={bankAccount} onChange={(e)=>setBankAccount(e.target.value)} autoComplete="off"/>
+          
 
-          <label htmlFor="clientName">Enter client's name</label>
-          <input name="clientName" id="clientName" type="text" placeholder="Enter client's name"
-          value={clientName} onChange={(e)=>setClientName(e.target.value)} autoComplete="off"/>
+          
 
-          <label htmlFor="clientAddress">Enter client's address</label>
-          <input name="clientAddress" id="clientAddress" type="text" placeholder="Enter client's address"
-          value={clientAddress} onChange={(e)=>setClientAddress(e.target.value)} autoComplete="off"/>  
+          
 
-          <label htmlFor="invoiceNumber">Invoice number</label>
-          <input name="invoiceNumber" id="invoiceNumber" type="text" placeholder="Invoice number"
-          value={invoiceNumber} onChange={(e)=>setInvoiceNumber(e.target.value)} autoComplete="off"/>  
-
-          <label htmlFor="invoiceDate">Invoice date</label>
-          <input name="invoiceDate" id="invoiceDate" type="date" placeholder="Invoice date"
-          value={invoiceDate} onChange={(e)=>setInvoiceDate(e.target.value)} autoComplete="off"/>   
-
-          <label htmlFor="dueDate">Due date</label>
-          <input name="dueDate" id="dueDate" type="date" placeholder="Due date"
-          value={dueDate} onChange={(e)=>setDueDate(e.target.value)} autoComplete="off"/>   
+          
 
           <label htmlFor="notes">Additional Notes</label>
           <textarea name="notes" id="notes" cols="30" rows="10" 
