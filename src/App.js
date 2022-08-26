@@ -13,12 +13,12 @@ function App() {
   const [name, setName] = useState("Priya Jha");
   const [address, setAddress] = useState("Surat, Gujarat");
   const [email, setEmail] = useState("priyajha7585@gmail.com");
-  const [phone, setPhone] = useState("7984256476");
-  const [bankName, setBankName] = useState("Kotak Bank");
-  const [bankAccount, setBankAccount] = useState("89243798236732");
+  const [phone, setPhone] = useState("9192939495");
+  const [bankName, setBankName] = useState("Fake Bank");
+  const [bankAccount, setBankAccount] = useState("000111222333444");
   const [website, setWebsite] = useState("www.priyajha.com");
   const [clientName, setClientName] = useState("Priya's Company");
-  const [clientAddress, setClientAddress] = useState("Noida, Uttar Pradesh");
+  const [clientAddress, setClientAddress] = useState("Bangalore");
   const [invoiceNumber, setInvoiceNumber] = useState("1001");
   const [invoiceDate, setInvoiceDate] = useState("2022-08-01");
   const [dueDate, setDueDate] = useState("2022-09-01");
