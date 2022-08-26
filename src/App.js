@@ -17,7 +17,7 @@ function App() {
   const [bankName, setBankName] = useState("Kotak Bank");
   const [bankAccount, setBankAccount] = useState("89243798236732");
   const [website, setWebsite] = useState("www.priyajha.com");
-  const [clientName, setClientName] = useState("Innovaccer");
+  const [clientName, setClientName] = useState("Priya's Company");
   const [clientAddress, setClientAddress] = useState("Noida, Uttar Pradesh");
   const [invoiceNumber, setInvoiceNumber] = useState("1001");
   const [invoiceDate, setInvoiceDate] = useState("2022-08-01");
