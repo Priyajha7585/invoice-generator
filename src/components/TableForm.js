@@ -1,6 +1,10 @@
 import React from 'react'
 
 function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount}) {
+    const calculateAmount = (amount) => {
+        setAmount(quantity * price)
+    }
+
   return (
     <>
         <div className="flex flex-col">
@@ -24,9 +28,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
             </div>
             <div className="flex flex-col">
                 <label htmlFor="amount">Amount</label>
-                <input type="text" name="amount" id="amount" placeholder="Amount"
-                    value={amount} onChange={(e)=>setAmount(e.target.value)}
-                />
+                <p>{calculateAmount(amount)}</p>
             </div>
         </div>
         
