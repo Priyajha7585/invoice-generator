@@ -27,6 +27,7 @@ function App() {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [amount, setAmount] = useState("");
+  const [list, setList] = useState([]);
   const handlePrint = () =>
     {
       window.print()
@@ -42,7 +43,7 @@ function App() {
           <MainDetails name={name} address={address}/>
           <ClientDetails clientName={clientName} clientAddress={clientAddress}/>
           <Dates invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} dueDate={dueDate} />
-          <Table description={description} quantity={quantity} price={price} amount={amount}/>
+          <Table description={description} quantity={quantity} price={price} amount={amount} list={list} setList={setList}/>
           <Notes notes={notes} />
           <Footer name={name} email={email} phone={phone} website={website} bankName={bankName} bankAccount={bankAccount} />
           <button onClick={()=>setShowInvoice(false)} className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500
@@ -136,6 +137,7 @@ function App() {
               quantity={quantity} setQuantity={setQuantity}
               price={price} setPrice={setPrice}
               amount={amount} setAmount={setAmount}
+              list={list} setList={setList}
             />
           </article>
 

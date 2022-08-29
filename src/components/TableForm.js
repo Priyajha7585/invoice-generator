@@ -1,12 +1,36 @@
-import React from 'react'
+import React, {useEffect} from 'react';
+import {v4 as uuidv4} from 'uuid';
 
-function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount}) {
-    const calculateAmount = (amount) => {
-        setAmount(quantity * price)
+function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList}) {
+    // const calculateAmount = (amount) => {
+    //     setAmount(quantity * price)
+    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newItem = {
+            id: uuidv4(),
+            description,
+            quantity,
+            price,
+            amount,
+        }
+        setDescription("")
+        setQuantity("")
+        setPrice("")
+        setAmount("")
+        setList([...list, newItem])
+        console.log(list)
     }
+    useEffect(()=>{
+        const calculateAmount = (amount) => {
+            setAmount(quantity * price)
+        }
+        calculateAmount(amount)
+    }, [amount, setAmount, quantity, price])
 
   return (
     <>
+        <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
             <label htmlFor="description">Item Description</label>
             <input type="text" name="description" id="description" placeholder="Item description"
@@ -28,10 +52,35 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
             </div>
             <div className="flex flex-col">
                 <label htmlFor="amount">Amount</label>
-                <p>{calculateAmount(amount)}</p>
+                <p>{amount}</p>
             </div>
         </div>
-        
+        <button type="submit" className="bg-blue-500 text-white font-bold mb-5 py-2 px-8 rounded shadow border-2 border-blue-500
+          hover:bg-transparent hover:text-blue-500 transition-all duration-300">Add Table Item</button>
+        </form>
+        {/* Table Items */}
+        <table width="100%" className="mb-10">
+            <thead>
+                <tr className="bg-gray-100 p-1">
+                <td className="font-bold">Item Description</td>
+                <td className="font-bold">Quantity</td>
+                <td className="font-bold">Price</td>
+                <td className="font-bold">Amount</td>
+                </tr>
+            </thead>
+            {list.map(({id, description, quantity, price, amount}) => (
+                <React.Fragment key={id}>
+                    <tbody>
+                        <tr>
+                        <td>{description}</td>
+                        <td>{quantity}</td>
+                        <td>{price}</td>
+                        <td>{amount}</td>
+                        </tr>
+                    </tbody>
+                </React.Fragment>
+            ))}
+        </table>
     </>
   )
 }
