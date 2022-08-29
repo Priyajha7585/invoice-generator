@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai'
 
-function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList}) {
+function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList, total, setTotal}) {
     
     const [isEditing, setIsEditing] = useState(false);
     const handleSubmit = (e) => {
@@ -28,6 +28,18 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         }
         calculateAmount(amount)
     }, [amount, setAmount, quantity, price])
+
+    // Calculate total amount function
+    let rows = document.querySelectorAll(".amount")
+    let sum = 0
+    for(let i=0; i<rows.length; i++)
+    {
+        if(rows[i].className==="amount")
+        {
+            sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)
+            setTotal(sum)
+        }
+    }
 
     // Edit function
     const editRow = (id) => {
@@ -91,7 +103,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                         <td>{description}</td>
                         <td>{quantity}</td>
                         <td>{price}</td>
-                        <td>{amount}</td>
+                        <td className="amount">{amount}</td>
                         <td><button onClick={()=>editRow(id)}>
                         <AiOutlineEdit className="text-green-500 font-bold text-xl"/></button></td>
                         <td><button onClick={()=>deleteRow(id)}>
@@ -101,6 +113,9 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                 </React.Fragment>
             ))}
         </table>
+        <div>
+            <h2 className="text-gray-800 text-4xl font-bold">Total : {total.toLocaleString()}</h2>
+        </div>
     </>
   )
 }
