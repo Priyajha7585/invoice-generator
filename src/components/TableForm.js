@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import {v4 as uuidv4} from 'uuid';
+import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai'
 
 function TableForm({description, setDescription, quantity, setQuantity, price, setPrice, amount, setAmount, list, setList}) {
-    // const calculateAmount = (amount) => {
-    //     setAmount(quantity * price)
-    // }
+    
+    const [isEditing, setIsEditing] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
         const newItem = {
@@ -19,6 +19,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         setPrice("")
         setAmount("")
         setList([...list, newItem])
+        setIsEditing(false)
         console.log(list)
     }
     useEffect(()=>{
@@ -27,6 +28,21 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
         }
         calculateAmount(amount)
     }, [amount, setAmount, quantity, price])
+
+    // Edit function
+    const editRow = (id) => {
+        const editingRow = list.find((row) => row.id === id)
+        setList(list.filter((row)=>row.id!==id))
+        setIsEditing(true)
+        setDescription(editingRow.description)
+        setQuantity(editingRow.quantity)
+        setPrice(editingRow.price)
+    }
+
+    // Delete Function
+    const deleteRow = (id) => {
+        setList(list.filter((row) => row.id!==id))
+    }
 
   return (
     <>
@@ -56,7 +72,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
             </div>
         </div>
         <button type="submit" className="bg-blue-500 text-white font-bold mb-5 py-2 px-8 rounded shadow border-2 border-blue-500
-          hover:bg-transparent hover:text-blue-500 transition-all duration-300">Add Table Item</button>
+          hover:bg-transparent hover:text-blue-500 transition-all duration-300">{isEditing===false ? <>Add Table Item</> : <>Edit Table Item</>}</button>
         </form>
         {/* Table Items */}
         <table width="100%" className="mb-10">
@@ -76,6 +92,10 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                         <td>{quantity}</td>
                         <td>{price}</td>
                         <td>{amount}</td>
+                        <td><button onClick={()=>editRow(id)}>
+                        <AiOutlineEdit className="text-green-500 font-bold text-xl"/></button></td>
+                        <td><button onClick={()=>deleteRow(id)}>
+                        <AiOutlineDelete className="text-red-500 font-bold text-xl"/></button></td>
                         </tr>
                     </tbody>
                 </React.Fragment>
