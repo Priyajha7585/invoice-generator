@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ClientDetails from "./components/ClientDetails";
 import Dates from "./components/Dates";
 import Footer from "./components/Footer";
@@ -7,28 +7,32 @@ import MainDetails from "./components/MainDetails";
 import Notes from "./components/Notes";
 import Table from "./components/Table";
 import TableForm from "./components/TableForm";
+import ReactToPrint from "react-to-print";
 
 function App() {
-  const [showInvoice, setShowInvoice] = useState(true);
-  const [name, setName] = useState("Priya Jha");
-  const [address, setAddress] = useState("Surat, Gujarat");
-  const [email, setEmail] = useState("priyajha7585@gmail.com");
-  const [phone, setPhone] = useState("9990009900");
-  const [bankName, setBankName] = useState("Fake Bank");
-  const [bankAccount, setBankAccount] = useState("000000000000000");
-  const [website, setWebsite] = useState("www.priyajha.com");
-  const [clientName, setClientName] = useState("Priya's Company");
-  const [clientAddress, setClientAddress] = useState("Bangalor, Karnataka");
-  const [invoiceNumber, setInvoiceNumber] = useState("1001");
-  const [invoiceDate, setInvoiceDate] = useState("2022-08-01");
-  const [dueDate, setDueDate] = useState("2022-09-01");
-  const [notes, setNotes] = useState("Please make my payment");
-  const [description, setDescription] = useState("Some long description");
+  const [showInvoice, setShowInvoice] = useState(false);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bankName, setBankName] = useState("");
+  const [bankAccount, setBankAccount] = useState("");
+  const [website, setWebsite] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
+  const [invoiceNumber, setInvoiceNumber] = useState("");
+  const [invoiceDate, setInvoiceDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [notes, setNotes] = useState("");
+  const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [amount, setAmount] = useState("");
   const [list, setList] = useState([]);
   const [total, setTotal] = useState(0);
+
+  const componentRef = useRef()
+
   const handlePrint = () =>
     {
       window.print()
@@ -39,7 +43,11 @@ function App() {
         
         {
           showInvoice ?
-          (<div>
+          (<>
+            <ReactToPrint trigger={()=><button className="ml-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500
+              hover:bg-transparent hover:text-blue-500 transition-all duration-300">Print / Download</button>}
+            content={()=>componentRef.current} />
+            <div ref={componentRef} className="p-5">
           <Header handlePrint={handlePrint}/>
           <MainDetails name={name} address={address}/>
           <ClientDetails clientName={clientName} clientAddress={clientAddress}/>
@@ -47,9 +55,11 @@ function App() {
           <Table description={description} quantity={quantity} price={price} amount={amount} list={list} setList={setList} total={total} setTotal={setTotal}/>
           <Notes notes={notes} />
           <Footer name={name} email={email} phone={phone} website={website} bankName={bankName} bankAccount={bankAccount} />
+        </div>
           <button onClick={()=>setShowInvoice(false)} className="mt-5 bg-blue-500 text-white font-bold py-2 px-8 rounded shadow border-2 border-blue-500
           hover:bg-transparent hover:text-blue-500 transition-all duration-300">Edit Information</button>
-        </div>)
+        </>
+        )
         :
         (
           <>

@@ -7,20 +7,28 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
     const [isEditing, setIsEditing] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newItem = {
-            id: uuidv4(),
-            description,
-            quantity,
-            price,
-            amount,
+        if (!description || !quantity || !price) 
+        {
+            alert("Please fill in all the inputs")
         }
-        setDescription("")
-        setQuantity("")
-        setPrice("")
-        setAmount("")
-        setList([...list, newItem])
-        setIsEditing(false)
-        console.log(list)
+        else{
+
+            const newItem = {
+                id: uuidv4(),
+                description,
+                quantity,
+                price,
+                amount,
+            }
+            setDescription("")
+            setQuantity("")
+            setPrice("")
+            setAmount("")
+            setList([...list, newItem])
+            setIsEditing(false)
+            console.log(list)
+        }
+
     }
     useEffect(()=>{
         const calculateAmount = (amount) => {
@@ -30,16 +38,18 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
     }, [amount, setAmount, quantity, price])
 
     // Calculate total amount function
-    let rows = document.querySelectorAll(".amount")
-    let sum = 0
-    for(let i=0; i<rows.length; i++)
-    {
-        if(rows[i].className==="amount")
+    useEffect(()=>{
+        let rows = document.querySelectorAll(".amount")
+        let sum = 0
+        for(let i=0; i<rows.length; i++)
         {
-            sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)
-            setTotal(sum)
+            if(rows[i].className==="amount")
+            {
+                sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)
+                setTotal(sum)
+            }
         }
-    }
+    })
 
     // Edit function
     const editRow = (id) => {
@@ -94,6 +104,8 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
                 <td className="font-bold">Quantity</td>
                 <td className="font-bold">Price</td>
                 <td className="font-bold">Amount</td>
+                <td className="font-bold"></td>
+                <td className="font-bold"></td>
                 </tr>
             </thead>
             {list.map(({id, description, quantity, price, amount}) => (
@@ -114,7 +126,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
             ))}
         </table>
         <div>
-            <h2 className="text-gray-800 text-4xl font-bold">Total : {total.toLocaleString()}</h2>
+            <h2 className="flex item-end justify-end text-gray-800 text-4xl font-bold">Rs. {total.toLocaleString()}</h2>
         </div>
     </>
   )
