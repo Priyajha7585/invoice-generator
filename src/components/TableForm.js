@@ -97,7 +97,7 @@ function TableForm({description, setDescription, quantity, setQuantity, price, s
           hover:bg-transparent hover:text-blue-500 transition-all duration-300">{isEditing===false ? <>Add Table Item</> : <>Edit Table Item</>}</button>
         </form>
         {/* Table Items */}
-        <table width="100%" className="mb-10">
+        <table width="100%" className="mb-2">
             <thead>
                 <tr className="bg-gray-100 p-1">
                 <td className="font-bold">Item Description</td>
